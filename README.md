@@ -11,6 +11,9 @@ I intend to write a wiki explaining how to use it.
 
 <a href="https://github.com/adelbs/ScreenCapture/releases">Download now</a>
 
+See how to use it here: https://youtu.be/sUcUbDdiKEw
+
+
 <img src="https://raw.githubusercontent.com/adelbs/ScreenCapture/master/resources/img/snap01.png" width="400">
 <img src="https://raw.githubusercontent.com/adelbs/ScreenCapture/master/resources/img/snap02.png" width="400">
 <img src="https://raw.githubusercontent.com/adelbs/ScreenCapture/master/resources/img/snap03.png" width="400">
