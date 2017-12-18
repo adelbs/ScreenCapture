@@ -1,0 +1,1 @@
+java -cp "ScreenCapture.jar" com.obi1.videorecorder.Main

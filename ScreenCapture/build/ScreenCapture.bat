@@ -1,0 +1,1 @@
+@start javaw -cp "ScreenCapture.jar" com.obi1.videorecorder.Main
