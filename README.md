@@ -9,6 +9,6 @@ Feel free to fork it or sugest anything. This project is at GNU General Public L
 
 I intend to write a wiki explaining how to use it.
 
-<img src="https://raw.githubusercontent.com/adelbs/ISO8583/master/resources/img/snap01.png" width="400">
-<img src="https://raw.githubusercontent.com/adelbs/ISO8583/master/resources/img/snap02.png" width="400">
-<img src="https://raw.githubusercontent.com/adelbs/ISO8583/master/resources/img/snap03.png" width="400">
+<img src="https://raw.githubusercontent.com/adelbs/ScreenCapture/master/resources/img/snap01.png" width="400">
+<img src="https://raw.githubusercontent.com/adelbs/ScreenCapture/master/resources/img/snap02.png" width="400">
+<img src="https://raw.githubusercontent.com/adelbs/ScreenCapture/master/resources/img/snap03.png" width="400">
