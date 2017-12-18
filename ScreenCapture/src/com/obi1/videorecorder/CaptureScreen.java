@@ -43,13 +43,19 @@ public class CaptureScreen extends JFrame implements ClipboardOwner {
 	private int actualInstanceId = -1;
 	private ArrayList<RectangleComponent> rectList = new ArrayList<RectangleComponent>();
 	
-	public CaptureScreen() throws AWTException {
+	private String tempDir;
+	private Color borderColor;
+	
+	public CaptureScreen(String tempDir, Color borderColor) throws AWTException {
+		
+		this.tempDir = tempDir;
+		this.borderColor = borderColor;
 		printScreen = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
 
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		setType(Type.UTILITY);
 		setUndecorated(true);
 		setBackground(new Color(1.0f,1.0f,1.0f,0.8f));
-		setVisible(true);
 		setLayout(null);
 		
 		rectList.add(new RectangleComponent(0));
@@ -112,10 +118,13 @@ public class CaptureScreen extends JFrame implements ClipboardOwner {
 				if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0))
 					save(true);
 				
-				if ((e.getKeyCode() == KeyEvent.VK_X) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0))
+				if ((e.getKeyCode() == KeyEvent.VK_S) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0))
 					save(false);
 			}
 		});
+		
+		setAlwaysOnTop(true);
+		setVisible(true);
 	}
 	
 	private void save(boolean isClipboard) {
@@ -125,7 +134,7 @@ public class CaptureScreen extends JFrame implements ClipboardOwner {
 		}
 		else {
 			try {
-				String fileName = Main.baseDir + File.separatorChar + "screen-"+ DateTime.now().toString(DateTimeFormat.forPattern("YYYY-MM-dd_H-ma")) + ".png";
+				String fileName = tempDir + File.separatorChar + "screen-"+ DateTime.now().toString(DateTimeFormat.forPattern("YYYY-MM-dd_H-ma")) + ".png";
 				ImageIO.write(rectList.get(0).getImage(), "PNG", new File(fileName));
 				Main.sendMessage("Screen saved at "+ fileName);
 			}
@@ -149,7 +158,6 @@ public class CaptureScreen extends JFrame implements ClipboardOwner {
         
 		private static final long serialVersionUID = 1L;
 
-		private Color red = new Color(1.0F,0.0F,1.0F);
         private Color black = new Color(0.0F,0.0F,0.0F);
         private int instanceId;
 
@@ -163,7 +171,7 @@ public class CaptureScreen extends JFrame implements ClipboardOwner {
 	    public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 
-			g.setColor(instanceId == 0 ? black : red);
+			g.setColor(instanceId == 0 ? black : borderColor);
 	        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 	        g.drawRect(1, 1, getWidth() - 3, getHeight() - 3);
 
