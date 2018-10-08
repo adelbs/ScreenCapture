@@ -134,7 +134,7 @@ public class CaptureScreen extends JFrame implements ClipboardOwner {
 		}
 		else {
 			try {
-				String fileName = tempDir + File.separatorChar + "screen-"+ DateTime.now().toString(DateTimeFormat.forPattern("YYYY-MM-dd_H-ma")) + ".png";
+				String fileName = tempDir + File.separatorChar + "screen-"+ DateTime.now().toString(DateTimeFormat.forPattern("YYYY-MM-dd_H-ma-s")) + ".png";
 				ImageIO.write(rectList.get(0).getImage(), "PNG", new File(fileName));
 				Main.sendMessage("Screen saved at "+ fileName);
 			}
