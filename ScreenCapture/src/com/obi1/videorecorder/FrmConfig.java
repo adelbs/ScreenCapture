@@ -36,9 +36,11 @@ public class FrmConfig extends JFrame {
 	private String strTempDir;
 	private String strColor;
 	private String trayMessages;
-
+	private String recordMouse;
+	
 	private JTextField txtTempDir = new JTextField();;
 	private JCheckBox ckTrayMessages = new JCheckBox("Allow Tray messages");
+	private JCheckBox ckRecordMouse = new JCheckBox("Record mouse pointer");
 	
 	private JPanel btnMagenta = new JPanel();
 	private JPanel btnRed = new JPanel();
@@ -91,6 +93,19 @@ public class FrmConfig extends JFrame {
 		txtTempDir.setColumns(10);
 		
 		
+		ckRecordMouse.setFont(new Font("Tahoma", Font.BOLD, 13));
+		ckRecordMouse.setForeground(Color.WHITE);
+		ckRecordMouse.setOpaque(false);
+		ckRecordMouse.setBounds(159, 108, 177, 25);
+		getContentPane().add(ckRecordMouse);
+		
+		ckRecordMouse.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				recordMouse = String.valueOf(ckRecordMouse.isSelected());
+			}
+		});
+
 		ckTrayMessages.setFont(new Font("Tahoma", Font.BOLD, 13));
 		ckTrayMessages.setForeground(Color.WHITE);
 		ckTrayMessages.setOpaque(false);
@@ -129,7 +144,7 @@ public class FrmConfig extends JFrame {
 		btnBlue.addMouseListener(new ColorListener(btnBlue, "blue"));
 		getContentPane().add(btnBlue);
 		
-		setBounds(0, 0, 498, 115);
+		setBounds(0, 0, 498, 140);
 		
 		addMouseListener(new MouseListener() {
 			
@@ -192,6 +207,7 @@ public class FrmConfig extends JFrame {
 		props.setProperty("tempDir", txtTempDir.getText());
 		props.setProperty("borderColor", strColor);
 		props.setProperty("trayMessages", trayMessages);
+		props.setProperty("recordMouse", recordMouse);
 		
 		props.store(new FileOutputStream("screencapture.properties"), null);
 	}
@@ -202,9 +218,11 @@ public class FrmConfig extends JFrame {
 		strTempDir = props.getProperty("tempDir", "c:" + File.separatorChar +"ScreenCapture");
 		strColor = props.getProperty("borderColor", "magenta");
 		trayMessages = props.getProperty("trayMessages", "true");
+		recordMouse = props.getProperty("recordMouse", "true");
 		
 		txtTempDir.setText(strTempDir);
 		ckTrayMessages.setSelected(trayMessages.equals("true"));
+		ckRecordMouse.setSelected(recordMouse.equals("true"));
 		
 		btnMagenta.setBorder(strColor.equals("magenta") ? new LineBorder(Color.BLACK) : null);
 		btnRed.setBorder(strColor.equals("red") ? new LineBorder(Color.BLACK) : null);
@@ -219,6 +237,10 @@ public class FrmConfig extends JFrame {
 	
 	public boolean isTrayMessages() {
 		return trayMessages.equals("true");
+	}
+
+	public boolean isRecordMouse() {
+		return recordMouse.equals("true");
 	}
 	
 	public Color getBorderColor() {

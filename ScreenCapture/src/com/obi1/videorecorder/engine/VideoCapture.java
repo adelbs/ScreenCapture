@@ -96,7 +96,7 @@ public final class VideoCapture {
 	 * @param cl classLoader
 	 * @throws Exception exception
 	 */
-	public static void startRecord(String scriptName, String strDate, String baseUrlRender, String baseUrlSave, String fileName, GraphicsConfiguration grConfig, ClassLoader cl) throws Exception {
+	public static void startRecord(final boolean recordMouse, String scriptName, String strDate, String baseUrlRender, String baseUrlSave, String fileName, GraphicsConfiguration grConfig, ClassLoader cl) throws Exception {
 		VideoCapture.baseUrlRender = baseUrlRender;
 		VideoCapture.baseUrlSave = baseUrlSave;
 		VideoCapture.fileName = fileName;
@@ -124,7 +124,7 @@ public final class VideoCapture {
 
 						final BufferedImage screenShot = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
 						final Graphics2D graphics2D = screenShot.createGraphics();
-						graphics2D.drawImage(cursor, x, y, null);
+						if(recordMouse) graphics2D.drawImage(cursor, x, y, null);
 						
 						if (!new File(VideoCapture.baseUrlRender).exists())
 							new File(VideoCapture.baseUrlRender).mkdirs();

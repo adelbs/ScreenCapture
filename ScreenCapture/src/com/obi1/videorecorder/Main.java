@@ -268,7 +268,7 @@ public class Main extends JFrame implements NativeKeyListener {
 			setVisible(false);
 			
 			fileName = "movie-"+ DateTime.now().toString(DateTimeFormat.forPattern("YYYY-MM-dd_H-ma"));
-			VideoCapture.startRecord(null, null, 
+			VideoCapture.startRecord(frmConfig.isRecordMouse(), null, null, 
 					frmConfig.getTempDir() + File.separatorChar + "tmp", 
 					frmConfig.getTempDir(),
 					fileName,
